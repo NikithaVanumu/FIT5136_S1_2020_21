@@ -6,8 +6,8 @@ import java.util.List;
 
 public class SignUp {
     private boolean flag;
-    private com.jetbrains.Candidate candidate = new com.jetbrains.Candidate();
-    public static List<com.jetbrains.Candidate> candList = new ArrayList<com.jetbrains.Candidate>();
+    private Candidate candidate = new Candidate();
+    public static List<Candidate> candList = new ArrayList<Candidate>();
     private static FileWriter fileWriter;
     private static BufferedWriter buffer;
 

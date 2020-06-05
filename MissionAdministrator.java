@@ -74,7 +74,7 @@ public class MissionAdministrator {
 
     }
     public static void processOption() throws IOException {
-        com.jetbrains.ReadingFile rf = new com.jetbrains.ReadingFile();
+        ReadingFile rf = new ReadingFile();
         switch (option) {
             case 1:
                 System.out.println("The following are the properties of shuttle");
