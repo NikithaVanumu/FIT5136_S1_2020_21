@@ -1,16 +1,13 @@
 package com.jetbrains;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MissionCoordinator {
     private String missionCoordinatorName;
     private String missionCoordinatorContact;
     static int option;
     private static int counter ;
-    private static final String missionIdSeries = "200";
-    private static final String missionFile = "mission.txt";
+
 
 
     public MissionCoordinator() {
@@ -50,7 +47,7 @@ public class MissionCoordinator {
         this.missionCoordinatorContact = missionCoordinatorContact;
     }
 
-    public static void enterOption() {
+    /*public static void enterOption() {
 
         System.out.println("Select an Option");
         System.out.println("-------------------------------------------------------------------------");
@@ -79,24 +76,7 @@ public class MissionCoordinator {
         switch (option) {
             case 1:
                 System.out.println("Create a mission");
-                CreateMission cm = new CreateMission();
-                //cm.details();
-                //File file = new File(missionFile);
 
-                //String missionSeries = null;
-                //if (file.exists() && !file.isDirectory()) {
-                    /*if (file.length() > 0) {
-                        ReadFile readFile = new ReadFile(candidateFile);
-                        candidateSeries = readFile.getMaximumCandId(candidateFile);
-                    } else {
-                        candidateSeries = candIdSeries + String.valueOf(counter++);
-                    }*/
-                /*} else {
-                    missionSeries = missionIdSeries + String.valueOf(counter++);
-                }
-                CreateMission createMission = new CreateMission();
-
-                createMission.details(missionSeries, missionFile);*/
                 enterOption();
                 break;
 
@@ -111,5 +91,5 @@ public class MissionCoordinator {
 
         }
 
-    }
+    }*/
 }

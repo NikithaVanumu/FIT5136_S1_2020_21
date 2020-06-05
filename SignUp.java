@@ -6,8 +6,8 @@ import java.util.List;
 
 public class SignUp {
     private boolean flag;
-    private Candidate candidate = new Candidate();
-    public static List<Candidate> candList = new ArrayList<Candidate>();
+    private com.jetbrains.Candidate candidate = new com.jetbrains.Candidate();
+    public static List<com.jetbrains.Candidate> candList = new ArrayList<com.jetbrains.Candidate>();
     private static FileWriter fileWriter;
     private static BufferedWriter buffer;
 
@@ -55,9 +55,9 @@ Used to take address input from the user
                 System.out.println("Enter Address");
                 String address = br.readLine();
 
-                flag = address.matches("[0-9A-Za-z+,]*");
+                flag = address.matches("[0-9a-zA-Z]*");
                 if (!flag)
-                    System.out.println("Enter  Alphabets ,Number and , only!");
+                    System.out.println("Enter  Alphabets ,Number only AND Please don't give any spaces while entering!");
                 else
                     candidate.setAddress(address + ",");
             }
@@ -80,12 +80,12 @@ Used to take nationality input from the user
 Used to take identificationNumber input from the user
 */
             while (!flag) {
-                System.out.println("Enter identificationNumber");
+                System.out.println("Enter IdentificationType");
                 String identificationNumber = br.readLine();
 
-                flag = identificationNumber.matches("([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9])");
+                flag = identificationNumber.matches("PAN|SSN|ABN|ADHAAR|TFN");
                 if (!flag)
-                    System.out.println("Enter only Number");
+                    System.out.println("Enter 'PAN' or 'SSN' or 'ADHAAR' or 'TFN' or 'ABN' ");
                 else
                     candidate.setIdentificationNumber(identificationNumber + ",");
             }
@@ -216,6 +216,7 @@ Used to take languageSpoken input from the user
             if (file.exists() && !file.isDirectory()) {
                 fileWriter = new FileWriter(file, true);
                 buffer = new BufferedWriter(fileWriter);
+                buffer.newLine();
             } else {
                 file.createNewFile();
                 fileWriter = new FileWriter(file);
@@ -238,6 +239,7 @@ Used to take languageSpoken input from the user
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
     }
 }
 

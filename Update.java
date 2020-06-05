@@ -133,7 +133,7 @@ public class Update {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         try {
             option = Integer.parseInt(br.readLine());
-            while (option < 1 || option > 13) {
+            while (option < 1 || option > 14) {
                 System.out.println("Enter options between 1 and 13 : ");
                 enterOption();
                 if (br != null)
