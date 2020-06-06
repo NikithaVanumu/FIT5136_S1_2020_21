@@ -1,13 +1,12 @@
-
 package com.jetbrains;
 public class Employment {
     private String title;
-    private int count;
+    private String count;
 
     public Employment() {
     }
 
-    public Employment(String title, int count) {
+    public Employment(String title, String count) {
         this.title = title;
         this.count = count;
     }
@@ -26,15 +25,17 @@ public class Employment {
     }
     /**
      *used to retrieve count
+     * @return
      */
 
-    public int getCount() {
+    public String getCount() {
         return count;
     }
     /**
      *used to update or set count
+     * @param count
      */
-    public void setCount(int count) {
+    public void setCount(String count) {
         this.count = count;
     }
 }

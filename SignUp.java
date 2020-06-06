@@ -41,7 +41,7 @@ Used to take Date of birth input from the user
                 System.out.println("Enter Date of birth (DD-MM-YYYY):");
                 String dob = br.readLine();
 
-                flag = dob.matches("[0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]*");
+                flag = dob.matches("[0-9][0-9]-[0-9][0-9]-[1-2][0-9][0-9][0-9]*");
                 if (!flag)
                     System.out.println("Please Enter in DD-MM-YYYY format");
                 else
@@ -185,9 +185,9 @@ Used to take computerSkills input from the user
                 System.out.println("Enter computerSkills:");
                 String computerSkills = br.readLine();
 
-                flag = computerSkills.matches("[A-Za-z]*");
+                flag = computerSkills.matches("Novice|Intermediate|Advanced|Expert|novice|intermediate|advanced|expert");
                 if (!flag)
-                    System.out.println("Enter only Alphabets!");
+                    System.out.println("Enter 'Novice' or 'Intermediate' or 'Advanced' or 'Expert' ");
                 else
                     candidate.setComputerSkills(computerSkills + ",");
             }

@@ -7,6 +7,10 @@ import java.util.List;
 public class CreateMission {
     private boolean flag;
     private Mission mission = new Mission();
+    private Job job = new Job();
+    private Employment employment = new Employment();
+    private Country country = new Country();
+
     private MissionCoordinator missionCoordinator = new MissionCoordinator();
     public static List<Mission> MissionList = new ArrayList<Mission>();
     private static FileWriter fileWriter;
@@ -66,18 +70,20 @@ Used to take Country of origin input from the user
 /*
 Used to take Countries allowed input from the user
 
+ */
+                 country.list();
                 while (!flag) {
-                    System.out.println("Enter  Countries allowed: ");
-                    String originCountry = br.readLine();
 
-                    flag = originCountry.matches("[A-Za-z]*");
+                    String countriesAllowedList = br.readLine();
+
+                    flag = countriesAllowedList.matches("[A-Za-z]*");
                     if (!flag)
                         System.out.println("Enter only Alphabets!");
                     else
-                        mission.setOriginCountry(originCountry + ",");
+                        country.setCountriesAllowedList(countriesAllowedList);
                 }
                 flag = false;
- */
+
 /*
 Used to take Mission Coordinator name input from the user
 */
@@ -111,36 +117,63 @@ Used to take Mission Coordinator Contact input from the user
             flag = false;
 
  /*
-Used to take Job from the user
+Used to take Job from the user */
 
                 while (!flag) {
                     System.out.println("Enter your job:");
-                    String originCountry = br.readLine();
+                    String jobName = br.readLine();
 
-                    flag = originCountry.matches("[A-Za-z]*");
+                    flag = jobName.matches("[A-Za-z]*");
                     if (!flag)
                         System.out.println("Enter only Alphabets!");
                     else
-                        mission.setOriginCountry(originCountry + ",");
+                        job.setJobName(jobName + ",");
                 }
                 flag = false;
- */
-
-/*
-Used to take employment requirements from the user
+        /*
+Used to take Job from the user*/
 
                 while (!flag) {
-                    System.out.println("Enter foodPreferences");
-                    String foodPreferences = br.readLine();
+                    System.out.println("Enter your job description:");
+                    String jobDescription = br.readLine();
 
-                    flag = foodPreferences.matches("[A-Za-z]*");
+                    flag = jobDescription.matches("[A-Za-z]*");
                     if (!flag)
                         System.out.println("Enter only Alphabets!");
                     else
-                        candidate.setFoodPreferences(foodPreferences + ",");
+                        job.setJobDescription(jobDescription + ",");
                 }
                 flag = false;
- */
+
+
+/*
+Used to take employment requirements from the user */
+
+                while (!flag) {
+                    System.out.println("Enter Employment requirements");
+                    System.out.println("a. Title(s):");
+                    String title= br.readLine();
+
+                    flag = title.matches("[A-Za-z]*");
+                    if (!flag)
+                        System.out.println("Enter only Alphabets!");
+                    else
+                        employment.setTitle(title + ",");
+                }
+                flag = false;
+            while (!flag) {
+
+                System.out.println("b. No. of employee required for each job:");
+                String count= br.readLine();
+
+                flag = count.matches("[0-9]*");
+                if (!flag)
+                    System.out.println("Enter only Numbers!");
+                else
+                    employment.setCount(count + ",");
+            }
+            flag = false;
+
 
 /*
 Used to take cargo requirements
@@ -163,7 +196,7 @@ Used to take mission launch date input from the user
                 System.out.println("Enter Mission launch date");
                 String missionLaunchDate = br.readLine();
 
-                flag = missionLaunchDate.matches("[0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]*");
+                flag = missionLaunchDate.matches("[0-9][0-9]-[0-9][0-9]-[1-2][0-9][0-9][0-9]*");
                 if (!flag)
                     System.out.println("Please Enter mission launch date in DD-MM-YYYY format");
                 else

@@ -11,6 +11,7 @@ public class Welcome {
     private static final String candIdSeries = "200";
     private static final String candidateFile = "candidate.txt";
 
+
     public static void main(String[] args) {
 
         System.out.println("-------------------------------------------------------------------------");
@@ -52,15 +53,12 @@ public class Welcome {
                 break;
 
             case 2:
-                System.out.println("SignUp");
-                /*SignUp s = new SignUp();
-                s.details(1000,);
+                System.out.println("--------SignUp--------");
 
-                enterOption();*/
                 File file = new File(candidateFile);
                 String candidateSeries = null;
                 if (file.exists() && !file.isDirectory()) {
-                   if (file.length() > 0) {
+                    if (file.length() > 0) {
                         com.jetbrains.ReadFile readFile = new com.jetbrains.ReadFile(candidateFile);
                         candidateSeries = readFile.getMaximumCandId(candidateFile);
                     } else {
@@ -74,7 +72,7 @@ public class Welcome {
                 createCandidate.details(candidateSeries, candidateFile);
                 enterOption();
                 break;
-                case 3:
+            case 3:
                 System.out.println("Successfully terminated the program.");
                 System.out.println("You can close the console now.");
 
@@ -104,14 +102,23 @@ public class Welcome {
 
 
         if (username.equals("coordinator") && password.equals("1234")) {
+            System.out.println("-------------------------------------------------------------------------");
+            System.out.println("WELCOME MISSION COORDINATOR TO MISSION MARS !!!");
+            System.out.println("-------------------------------------------------------------------------");
             enterOptionForCoordinator();
 
 
         } else if (username.equals("admin") && password.equals("1234")) {
-            System.out.println("Mission admin has logged in");
+
+            System.out.println("-------------------------------------------------------------------------");
+            System.out.println("WELCOME MISSION ADMINISTRATOR TO MISSION MARS !!!");
+            System.out.println("-------------------------------------------------------------------------");
             com.jetbrains.MissionAdministrator ma = new com.jetbrains.MissionAdministrator();
             ma.enterOption();
         } else if (validate(username,password)) {
+            System.out.println("-------------------------------------------------------------------------");
+            System.out.println("WELCOME CANDIDATE TO MISSION MARS !!!");
+            System.out.println("-------------------------------------------------------------------------");
             enterOptionForCand();
 
         }else{
@@ -132,20 +139,20 @@ public class Welcome {
             String strLine;
             String UserID;
             String FilePassword;
-            String lastLine = null;
+            //String lastLine = null;
             //Read File Line By Line
             while ((strLine = br.readLine()) != null) {
 
                 String[] d = strLine.split(",");
-                 UserID = d[0];
-                 FilePassword = d[2];
-                 if(UserID.equals(vUsername))
-                 {
-                     if(FilePassword.equals(vPassword))
-                       return  authentication = true;
-                 }
+                UserID = d[0];
+                FilePassword = d[2];
+                if(UserID.equals(vUsername))
+                {
+                    if(FilePassword.equals(vPassword))
+                        return  authentication = true;
+                }
 
-              }
+            }
             //Close the input stream
             in.close();
         } catch (Exception e) {//Catch exception if any
@@ -184,7 +191,7 @@ public class Welcome {
         switch (option) {
             case 1:
                 System.out.println("Edit Profile");
-                com.jetbrains.Update updateFile = new com.jetbrains.Update(candidateFile);
+                Update updateFile = new Update(candidateFile);
                 updateFile.getCandidateIdToUpdate(candIdSeries);
                 break;
             case 2:
@@ -229,21 +236,19 @@ public class Welcome {
             case 1:
                 System.out.println("Create a mission");
 
-                //CreateMission cm = new CreateMission();
-                //cm.details();
                 File file = new File(missionFile);
-
                 String missionSeries = null;
-                if (file.exists() && !file.isDirectory()) {
-                    /*if (file.length() > 0) {
+                /*if (file.exists() && !file.isDirectory()) {
+                    if (file.length() > 0) {
                         ReadFile readFile = new ReadFile(missionFile);
                         missionSeries = readFile.getMaximumMissionId(missionFile);
                     } else {
                         missionSeries = missionIdSeries + String.valueOf(counter++);
-                    }*/
+                    }
                 } else {
                     missionSeries = missionIdSeries + String.valueOf(counter++);
-                }
+                }*/
+
                 com.jetbrains.CreateMission createMission = new com.jetbrains.CreateMission();
 
                 createMission.details(missionSeries, missionFile);
@@ -268,5 +273,3 @@ public class Welcome {
 
     }
 }
-
-

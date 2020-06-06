@@ -4,7 +4,7 @@ public class Job {
     private String jobName;
     private String jobDescription;
 
-    public Job(String jobName, String jobDescription) {
+    public Job() {
         this.jobName = jobName;
         this.jobDescription = jobDescription;
     }
@@ -37,4 +37,3 @@ public class Job {
         this.jobDescription = jobDescription;
     }
 }
-
