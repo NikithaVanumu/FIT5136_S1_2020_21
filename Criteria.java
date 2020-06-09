@@ -1,4 +1,3 @@
-
 package com.jetbrains;
 public class Criteria {
     private int range_of_age;
