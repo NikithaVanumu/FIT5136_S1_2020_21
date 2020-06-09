@@ -69,20 +69,19 @@ Used to take Country of origin input from the user
             flag = false;
 /*
 Used to take Countries allowed input from the user
-
  */
-                 country.list();
-                while (!flag) {
+            country.list();
+            while (!flag) {
 
-                    String countriesAllowedList = br.readLine();
+                String countriesAllowedList = br.readLine();
 
-                    flag = countriesAllowedList.matches("[A-Za-z]*");
-                    if (!flag)
-                        System.out.println("Enter only Alphabets!");
-                    else
-                        country.setCountriesAllowedList(countriesAllowedList);
-                }
-                flag = false;
+                flag = countriesAllowedList.matches("[A-Za-z]*");
+                if (!flag)
+                    System.out.println("Enter only Alphabets!");
+                else
+                    country.setCountriesAllowedList(countriesAllowedList);
+            }
+            flag = false;
 
 /*
 Used to take Mission Coordinator name input from the user
@@ -119,48 +118,48 @@ Used to take Mission Coordinator Contact input from the user
  /*
 Used to take Job from the user */
 
-                while (!flag) {
-                    System.out.println("Enter your job:");
-                    String jobName = br.readLine();
+            while (!flag) {
+                System.out.println("Enter your job:");
+                String jobName = br.readLine();
 
-                    flag = jobName.matches("[A-Za-z]*");
-                    if (!flag)
-                        System.out.println("Enter only Alphabets!");
-                    else
-                        job.setJobName(jobName + ",");
-                }
-                flag = false;
+                flag = jobName.matches("[A-Za-z]*");
+                if (!flag)
+                    System.out.println("Enter only Alphabets!");
+                else
+                    job.setJobName(jobName + ",");
+            }
+            flag = false;
         /*
 Used to take Job from the user*/
 
-                while (!flag) {
-                    System.out.println("Enter your job description:");
-                    String jobDescription = br.readLine();
+            while (!flag) {
+                System.out.println("Enter your job description:");
+                String jobDescription = br.readLine();
 
-                    flag = jobDescription.matches("[A-Za-z]*");
-                    if (!flag)
-                        System.out.println("Enter only Alphabets!");
-                    else
-                        job.setJobDescription(jobDescription + ",");
-                }
-                flag = false;
+                flag = jobDescription.matches("[A-Za-z]*");
+                if (!flag)
+                    System.out.println("Enter only Alphabets!");
+                else
+                    job.setJobDescription(jobDescription + ",");
+            }
+            flag = false;
 
 
 /*
 Used to take employment requirements from the user */
 
-                while (!flag) {
-                    System.out.println("Enter Employment requirements");
-                    System.out.println("a. Title(s):");
-                    String title= br.readLine();
+            while (!flag) {
+                System.out.println("Enter Employment requirements");
+                System.out.println("a. Title(s):");
+                String title= br.readLine();
 
-                    flag = title.matches("[A-Za-z]*");
-                    if (!flag)
-                        System.out.println("Enter only Alphabets!");
-                    else
-                        employment.setTitle(title + ",");
-                }
-                flag = false;
+                flag = title.matches("[A-Za-z]*");
+                if (!flag)
+                    System.out.println("Enter only Alphabets!");
+                else
+                    employment.setTitle(title + ",");
+            }
+            flag = false;
             while (!flag) {
 
                 System.out.println("b. No. of employee required for each job:");
@@ -221,14 +220,14 @@ Used to take mission destination input from the user
 Used to take mission duration input from the user
 */
             while (!flag) {
-                System.out.println("Enter mission duration");
+                System.out.println("Enter mission duration in Number of Days");
                 String missionDuration = br.readLine();
 
-                flag = missionDuration.matches("[A-Za-z]*");
+                flag = missionDuration.matches("[0-9A-Za-z]*");
                 if (!flag)
                     System.out.println("Enter only Alphabets!");
                 else
-                    mission.setMissionDuration(missionDuration + ",");
+                    mission.setMissionDuration(missionDuration);
             }
             flag = false;
 
@@ -243,6 +242,7 @@ Used to take mission duration input from the user
             if (file.exists() && !file.isDirectory()) {
                 fileWriter = new FileWriter(file, true);
                 buffer = new BufferedWriter(fileWriter);
+                buffer.newLine();
             } else {
                 file.createNewFile();
                 fileWriter = new FileWriter(file);

@@ -9,6 +9,8 @@ public class MissionAdministrator {
     private String missionAdministratorName;
     private String missionAdministratorContact;
     static int option;
+    private static final String missionFile = "mission.txt";
+    private static Scanner s;
 
     public MissionAdministrator() {
 
@@ -74,7 +76,7 @@ public class MissionAdministrator {
 
     }
     public static void processOption() throws IOException {
-        ReadingFile rf = new ReadingFile();
+        com.jetbrains.ReadingFile rf = new com.jetbrains.ReadingFile();
         switch (option) {
             case 1:
                 System.out.println("The following are the properties of shuttle");
@@ -90,6 +92,22 @@ public class MissionAdministrator {
 
             case 2:
                 System.out.println("Edit a mission");
+                try {
+                    DisplayMissionDetails.MissionDetails(missionFile);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                System.out.println("Enter Mission ID to edit....");
+                s= new Scanner(System.in);
+                String value = s.nextLine();
+
+
+                try {
+                    EditMission.setFileMission(missionFile, value);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 enterOption();
                 break;
 
@@ -97,6 +115,7 @@ public class MissionAdministrator {
                 System.out.println("List of N best candidate");
                 rf.readFileCand();
                 System.out.println("Once the Criteria is created then N best candidate are selected");
+                System.out.println(" Criteria has been created \n \n Best candidates are: \n 1. Julie Hopper \n 2. Joel Cherry ");
                 enterOption();
                 break;
 

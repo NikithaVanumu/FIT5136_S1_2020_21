@@ -6,8 +6,8 @@ import java.util.List;
 
 public class SignUp {
     private boolean flag;
-    private Candidate candidate = new Candidate();
-    public static List<Candidate> candList = new ArrayList<Candidate>();
+    private com.jetbrains.Candidate candidate = new com.jetbrains.Candidate();
+    public static List<com.jetbrains.Candidate> candList = new ArrayList<com.jetbrains.Candidate>();
     private static FileWriter fileWriter;
     private static BufferedWriter buffer;
 
@@ -41,7 +41,7 @@ Used to take Date of birth input from the user
                 System.out.println("Enter Date of birth (DD-MM-YYYY):");
                 String dob = br.readLine();
 
-                flag = dob.matches("[0-9][0-9]-[0-9][0-9]-[1-2][0-9][0-9][0-9]*");
+                flag = dob.matches("[0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]*");
                 if (!flag)
                     System.out.println("Please Enter in DD-MM-YYYY format");
                 else
@@ -81,13 +81,13 @@ Used to take identificationNumber input from the user
 */
             while (!flag) {
                 System.out.println("Enter IdentificationType");
-                String identificationNumber = br.readLine();
+                String IdentificationType = br.readLine();
 
-                flag = identificationNumber.matches("PAN|SSN|ABN|ADHAAR|TFN");
+                flag = IdentificationType.matches("PAN|SSN|ABN|ADHAAR|TFN");
                 if (!flag)
                     System.out.println("Enter 'PAN' or 'SSN' or 'ADHAAR' or 'TFN' or 'ABN' ");
                 else
-                    candidate.setIdentificationNumber(identificationNumber + ",");
+                    candidate.setIdentificationNumber(IdentificationType + ",");
             }
             flag = false;
 /*
@@ -185,9 +185,9 @@ Used to take computerSkills input from the user
                 System.out.println("Enter computerSkills:");
                 String computerSkills = br.readLine();
 
-                flag = computerSkills.matches("Novice|Intermediate|Advanced|Expert|novice|intermediate|advanced|expert");
+                flag = computerSkills.matches("[A-Za-z]*");
                 if (!flag)
-                    System.out.println("Enter 'Novice' or 'Intermediate' or 'Advanced' or 'Expert' ");
+                    System.out.println("Enter only Alphabets!");
                 else
                     candidate.setComputerSkills(computerSkills + ",");
             }
@@ -203,37 +203,39 @@ Used to take languageSpoken input from the user
                 if (!flag)
                     System.out.println("Enter only Alphabets!");
                 else
-                    candidate.setLanguageSpoken(languageSpoken + ",");
+                    candidate.setLanguageSpoken(languageSpoken );
             }
             flag = false;
 
 
-            File file = new File(filename);
 
-            System.out.println(" ID : " + counter);
-            candidate.setCandId(counter);
 
-            if (file.exists() && !file.isDirectory()) {
-                fileWriter = new FileWriter(file, true);
-                buffer = new BufferedWriter(fileWriter);
-                buffer.newLine();
-            } else {
-                file.createNewFile();
-                fileWriter = new FileWriter(file);
-                buffer = new BufferedWriter(fileWriter);
-            }
+                File file = new File(filename);
 
-            buffer.write(candidate.getCandId() + candidate.getName() + candidate.getDob()
-                    + candidate.getAddress() + candidate.getNationality() + candidate.getIdentificationNumber() + candidate.getAllergies()
-                    + candidate.getGender() + candidate.getFoodPreferences() + candidate.getQualification() + candidate.getWorkExperience()
-                    + candidate.getOccupation() + candidate.getComputerSkills() + candidate.getLanguageSpoken());
+                System.out.println(" ID : " + counter);
+                candidate.setCandId(counter);
 
-            if (buffer != null || fileWriter != null) {
-                buffer.close();
-                fileWriter.close();
-            }
+                if (file.exists() && !file.isDirectory()) {
+                    fileWriter = new FileWriter(file, true);
+                    buffer = new BufferedWriter(fileWriter);
+                    buffer.newLine();
+                } else {
+                    file.createNewFile();
+                    fileWriter = new FileWriter(file);
+                    buffer = new BufferedWriter(fileWriter);
+                }
 
-            System.out.println("Congratulations!! You have Successfully registered!! " + candidate.getName());
+                buffer.write(candidate.getCandId() + candidate.getName() + candidate.getDob()
+                        + candidate.getAddress() + candidate.getNationality() + candidate.getIdentificationNumber() + candidate.getAllergies()
+                        + candidate.getGender() + candidate.getFoodPreferences() + candidate.getQualification() + candidate.getWorkExperience()
+                        + candidate.getOccupation() + candidate.getComputerSkills() + candidate.getLanguageSpoken());
+
+                if (buffer != null || fileWriter != null) {
+                    buffer.close();
+                    fileWriter.close();
+                }
+
+                System.out.println("Congratulations!! You have Successfully registered!! " + candidate.getName());
 
 
         } catch (IOException ex) {

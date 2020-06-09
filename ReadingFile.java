@@ -17,7 +17,7 @@ public class ReadingFile {
 
             try
             {
-                File file = new File("F:\\FIT5136_S1_2020_21\\shuttle.xlsx");   //creating a new file instance
+                File file = new File("C:\\Users\\Eeswar Batchu\\IdeaProjects\\originalcode\\shuttle.xlsx");   //creating a new file instance
                 FileInputStream fis = new FileInputStream(file);   //obtaining bytes from the file
 //creating Workbook instance that refers to .xlsx file
                 XSSFWorkbook wb = new XSSFWorkbook(fis);
@@ -57,7 +57,7 @@ public class ReadingFile {
 
         try
         {
-            File file = new File("F:\\FIT5136_S1_2020_21\\candidate.xlsx");   //creating a new file instance
+            File file = new File("C:\\Users\\Eeswar Batchu\\IdeaProjects\\originalcode\\candidate.xlsx");   //creating a new file instance
             FileInputStream fis = new FileInputStream(file);   //obtaining bytes from the file
 //creating Workbook instance that refers to .xlsx file
             XSSFWorkbook wb = new XSSFWorkbook(fis);

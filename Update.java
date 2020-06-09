@@ -28,6 +28,8 @@ public class Update {
     private Candidate candidate = new Candidate();
 
     public Update(String filename) {
+
+        System.out.println("In File" + filename);
         this.filename = filename;
     }
 
@@ -125,7 +127,7 @@ public class Update {
      */
     public void getCandidateIdToUpdate(String candId) {
         ReadFile readFile = new ReadFile(filename);
-
+        System.out.println("In Get-  "+ candId);
         readFile.getCandidateRecord(candId);
         Map<String, Candidate> map = readFile.readFileFor(candId);
         enterOption();

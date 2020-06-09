@@ -49,7 +49,7 @@ public class ReadFile {
 
                 String[] recordList = line.split(";");
                 for (String stringInRecordList : recordList) {
-                    String StringList[] = stringInRecordList.split(",");
+                    String[] StringList = stringInRecordList.split(",");
 
                     String cId = StringList[0];
 
@@ -103,14 +103,15 @@ public class ReadFile {
      *This method is used to get all the details of Candidate Record
      */
     public void getCandidateRecord(String candId) {
-        Scanner sc = new Scanner(System.in);
+        System.out.println("In getCandRecord - "+ candId);
 
         if (!candidateMap.isEmpty()) {
+            System.out.println("Inside CandidateMap   ");
             if (candidateMap.get(candId) != null) {
                 System.out.println("Here is the Candidate information");
                 System.out.println("--------------------------------------------------------");
                 System.out.println("ID, Name, Date of birth, Address, Nationality, Identification Number, Gender, Allergies, Food Preferences, Qualification, Work Experience, Occupation,Computer skills, Language Spoken;");
-
+                printCandidateInformation(candId);
 
                 System.out.println("--------------------------------------------------------");
             } else {
@@ -118,6 +119,8 @@ public class ReadFile {
                 Welcome.enterOption();// We need to call the admin class over here but I haven't declare class so I'm calling welcome class
             }
         }
+       else
+            System.out.println("Else ");
     }
 
     public String getMaximumCandId(String fileName) {
@@ -162,5 +165,34 @@ public class ReadFile {
                 + candidateMap.get(candId).getComputerSkills() + "," + candidateMap.get(candId).getLanguageSpoken() + ";");
     }
 
+    public String getMaximumMissionId(String fileName) {
+        String maxMissionID = null;
+        List<Integer> listOfMissionIDs = new ArrayList<Integer>();
+        try {
+            in = new Scanner(new File(fileName));
+            String line;
+
+            while (in.hasNext()) {
+                line = in.next();
+
+                String[] recordList = line.split(";");
+                for (String stringInRecordList : recordList) {
+                    String StringList[] = stringInRecordList.split(",");
+                    listOfMissionIDs.add(Integer.parseInt(StringList[0]));
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            in.close();
+        }
+        if (listOfMissionIDs.size() > 0) {
+            Collections.sort(listOfMissionIDs, Collections.reverseOrder());
+            maxMissionID = String.valueOf(new Integer(listOfMissionIDs.get(0) + 1));
+        }
+
+        return maxMissionID;
+    }
 }
 
